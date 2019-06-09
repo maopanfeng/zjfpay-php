@@ -11,5 +11,8 @@ return [
     ],
     'api_version' => 'v1', // 接口版本
     'events' => [
+    ],
+    'signature' => [
+        'sign_type' => 'md5',
     ]
 ];

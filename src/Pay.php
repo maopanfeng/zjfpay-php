@@ -158,6 +158,21 @@ class Pay
             self::$config = new Collection(include __DIR__.'/config.php');
         }
         !empty($config) && self::$config->merge((array)$config);
+        self::resolveConfig();
+    }
+    
+    /**
+     * @param $name
+     * @param $default
+     * @return Collection|mixed
+     */
+    public static function getConfig($name=null, $default = null)
+    {
+        if (is_null($name)) {
+            return self::$config;
+        } else {
+            return self::$config->get($name, $default);
+        }
     }
     
     public static function resolveConfig()
@@ -171,5 +186,6 @@ class Pay
         if (!empty($events = self::$config->get('events'))) {
             Event::import($events);
         }
+        self::$config->set('signature.secret.value', self::getAppSecret());
     }
 }

@@ -24,7 +24,8 @@ class Index
      */
     public function charge($action, $data)
     {
-        var_dump(\zjf\pay\apis\base\Charge::{$action}($data));
+        $charge = new \zjf\pay\apis\base\Charge();
+        var_dump($charge->{$action}($data));
     }
     /**
      *
@@ -33,7 +34,28 @@ class Index
      */
     public function refund($action, $data)
     {
-        var_dump(\zjf\pay\apis\base\Refund::{$action}($data));
+        $refund = new \zjf\pay\apis\base\Refund();
+        var_dump($refund->{$action}($data));
+    }
+    /**
+     *
+     * @param string $action create,query,lists
+     * @param $data
+     */
+    public function order($action, $data)
+    {
+        $order = new \zjf\pay\apis\user\Order();
+        var_dump($order->{$action}($data));
+    }
+    /**
+     *
+     * @param string $action create,query,lists
+     * @param $data
+     */
+    public function user($action, $data)
+    {
+        $order = new \zjf\pay\apis\user\User();
+        var_dump($order->{$action}($data));
     }
 }
 $params = [];
@@ -43,7 +65,7 @@ if (php_sapi_name() === 'cli') {
     $data = empty($params['p']) ? [] : json_decode($params['p'], true, 512,JSON_BIGINT_AS_STRING);
 } else {
     $params = $_GET;
-    $data = isset($_POST['data']) ? $_POST['data'] : (isset($_GET['data']) ? $_GET['data'] : []);
+    $data = !empty($_POST) ? $_POST : (isset($_GET['data']) ? $_GET['data'] : []);
     !is_array($data) && $data = json_decode($data, true, 512,JSON_BIGINT_AS_STRING);
 }
 $params = php_sapi_name() === 'cli' ? getopt('m:a:') : $_GET;
