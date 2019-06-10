@@ -19,8 +19,6 @@ class Order extends ApiAbstract
      * time_expire
      * detail
      * device_info
-     * notify_url
-     * return_url
      * discountable_amount
      * promo_params
      * attach
@@ -36,6 +34,8 @@ class Order extends ApiAbstract
     
     /**
      * @param       $data
+     * trade_no： 二选一 优先
+     * out_trade_no: 二选一
      * @param array $options
      *
      * @return bool|string
@@ -48,6 +48,14 @@ class Order extends ApiAbstract
     
     /**
      * @param       $data
+     * page
+     * pagesize
+     * member_id
+     * refunded
+     * canceled
+     * paid
+     * created: ['st', 'et']
+     *
      * @param array $options
      *
      * @return bool|string
@@ -57,19 +65,16 @@ class Order extends ApiAbstract
     {
         return $this->sendRequest(Endpoint::USER_ORDER_LISTS, $data, 'POST', $options);
     }
+    
     /**
      * @param       $data
-     * @param array $options
+     * trade_no
+     * trade_type
+     * channel
+     * time_expire
+     * extra
+     * return_url
      *
-     * @return bool|string
-     * @throws \Exception
-     */
-    public function update($data, $options = [])
-    {
-        return $this->sendRequest(Endpoint::USER_ORDER_UPDATE, $data, 'POST', $options);
-    }
-    /**
-     * @param       $data
      * @param array $options
      *
      * @return bool|string
@@ -82,6 +87,8 @@ class Order extends ApiAbstract
 
     /**
      * @param       $data
+     * out_trade_no
+     * member_id
      * @param array $options
      *
      * @return bool|string

@@ -28,4 +28,8 @@ class Endpoint
     const USER_USER_QUERY = 'pay/user/query';
     const USER_USER_LISTS = 'pay/user/lists';
     const USER_USER_UPDATE = 'pay/user/update';
+    
+    const USER_REFUND_CREATE = 'pay/user/refund/create';
+    const USER_REFUND_QUERY = 'pay/user/refund/query';
+    const USER_REFUND_LISTS = 'pay/user/refund/lists';
 }
