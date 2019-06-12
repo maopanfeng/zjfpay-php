@@ -4,6 +4,8 @@ use zjf\pay\Pay;
 
 require __DIR__.'/../vendor/autoload.php';
 require __DIR__.'/../src/Init.php';
+require __DIR__.'/apis.php';
+require __DIR__.'/log.php';
 
 if (php_sapi_name() !== 'cli') {
     Init::checkEnv();
@@ -44,8 +46,8 @@ class Index
      */
     public function order($action, $data)
     {
-        $order = new \zjf\pay\apis\user\Order();
-        var_dump($order->{$action}($data));
+        $order = new OrderCtr();
+        $order->{$action}($data);
     }
     /**
      *
@@ -54,8 +56,8 @@ class Index
      */
     public function user($action, $data)
     {
-        $order = new \zjf\pay\apis\user\User();
-        var_dump($order->{$action}($data));
+        $order = new UserCtr();
+        $order->{$action}($data);
     }
 }
 $params = [];
