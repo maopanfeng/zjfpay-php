@@ -28,8 +28,13 @@ class Endpoint
     const USER_USER_QUERY = 'pay/user/query';
     const USER_USER_LISTS = 'pay/user/lists';
     const USER_USER_UPDATE = 'pay/user/update';
+    const USER_USER_DELETE = 'pay/user/delete';
     
     const USER_REFUND_CREATE = 'pay/user/refund/create';
     const USER_REFUND_QUERY = 'pay/user/refund/query';
     const USER_REFUND_LISTS = 'pay/user/refund/lists';
+    
+    const BALANCE_RECHARGE_CREATE = 'pay/balance/recharge/create';
+    const BALANCE_RECHARGE_QUERY = 'pay/balance/recharge/query';
+    const BALANCE_RECHARGE_LISTS = 'pay/balance/recharge/lists';
 }

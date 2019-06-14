@@ -77,4 +77,21 @@ class User extends ApiAbstract
     {
         return $this->sendRequest(Endpoint::USER_USER_UPDATE, $data, 'POST', $options);
     }
+    /**
+     * @param       $data
+     * member_id
+     * email
+     * mobile
+     * name
+     * extra: json, eg: {"avatar":"", "gender":"", "address":""}
+     *
+     * @param array $options
+     *
+     * @return bool|string
+     * @throws \Exception
+     */
+    public function delete($data, $options = [])
+    {
+        return $this->sendRequest(Endpoint::USER_USER_DELETE, $data, 'POST', $options);
+    }
 }

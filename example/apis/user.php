@@ -10,37 +10,58 @@ class UserCtr
         $this->member = new \zjf\pay\apis\user\User();
     }
     
-    public function query($data = [])
+    public function create($data = [])
     {
-        $data = [
-            'member_id' => '9',
-        ];
         try {
-            $result = $this->member->query($data);
-            $this->log($result, $data);
+            $result = $this->member->create($data);
+            Log::info($data, $result);
+            UserDeal::create($result);
         } catch (\Exception $e) {
-            $this->log([], [], $e);
+            Log::error($data, $e);
         }
     }
     
-    protected function log($result=[], $data=[], $error=[])
+    public function query($data = [])
     {
-        echo '<pre>';
-        echo '----------请求数据---------<br>';
-        echo var_export($data, true);
-        echo '<br>--------------------------<br>';
-        
-        echo '----------响应数据---------<br>';
-        echo var_export($result, true);
-        echo '<br>--------------------------<br>';
-        
-        echo '----------错误信息---------<br>';
-        echo var_export([
-            'msg' => $error->getMessage(),
-            'file' => $error->getFile(),
-            'line' => $error->getLine(),
-            'trace' => $error->getTrace(),
-        ], true);
-        echo '<br>--------------------------<br>';
+        try {
+            $result = $this->member->query($data);
+            Log::info($data, $result);
+            UserDeal::create($result);
+        } catch (\Exception $e) {
+            Log::error($data, $e);
+        }
+    }
+    
+    public function lists($data = [])
+    {
+        try {
+            $result = $this->member->lists($data);
+            Log::info($data, $result);
+            UserDeal::create($result);
+        } catch (\Exception $e) {
+            Log::error($data, $e);
+        }
+    }
+    
+    public function update($data = [])
+    {
+        try {
+            $result = $this->member->update($data);
+            Log::info($data, $result);
+            UserDeal::create($result);
+        } catch (\Exception $e) {
+            Log::error($data, $e);
+        }
+    }
+    
+    public function delete($data = [])
+    {
+        try {
+            $result = $this->member->delete($data);
+            Log::info($data, $result);
+            UserDeal::create($result);
+        } catch (\Exception $e) {
+            Log::error($data, $e);
+        }
     }
 }
