@@ -10,10 +10,6 @@ use zjf\pay\Pay;
 
 abstract class ApiAbstract implements ApiInterface
 {
-    public function __construct()
-    {
-    }
-    
     protected function sendRequest($endpoint, $data =[], $method = 'POST', $options = [])
     {
         try {
