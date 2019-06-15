@@ -14,9 +14,7 @@
         "ext-curl": "*",
         "ext-mbstring": "*",
         "mxhei/helpers": "dev-master",
-        "mxhei/signature": "dev-master",
-        "pingplusplus/pingpp-php": "^2.4",
-        "inhere/php-validate": "^1.0"
+        "mxhei/signature": "dev-master"
     },
     "autoload": {
         "psr-4": {

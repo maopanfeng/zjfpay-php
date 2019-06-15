@@ -31,6 +31,7 @@ class Init
         } elseif (strpos($class, '\\') !== false) {
             if (substr($class, 0, 7) === 'zjf\\pay') {
                 $file = str_replace('\\', DIRECTORY_SEPARATOR ,__DIR__.substr($class, 7).'.php');
+                static::$namespaces[$class] = $file;
             }
         }
         if (!empty($file) && file_exists($file)) {
@@ -83,7 +84,7 @@ class Init
 // 环境检查
 if (php_sapi_name() === 'cli') {
     try {
-        Init::checkEnv();
+        autoload::checkEnv();
     } catch (\Exception $e) {
         exit($e->getMessage());
     }

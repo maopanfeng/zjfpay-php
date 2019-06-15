@@ -8,7 +8,7 @@ require __DIR__.'/apis.php';
 require __DIR__.'/log.php';
 
 if (php_sapi_name() !== 'cli') {
-    Init::checkEnv();
+    autoload::checkEnv();
 }
 
 class Index

@@ -37,4 +37,14 @@ class Endpoint
     const BALANCE_RECHARGE_CREATE = 'pay/balance/recharge/create';
     const BALANCE_RECHARGE_QUERY = 'pay/balance/recharge/query';
     const BALANCE_RECHARGE_LISTS = 'pay/balance/recharge/lists';
+    const BALANCE_RECHARGE_PAY = 'pay/balance/recharge/pay';
+    
+    const BALANCE_WITHDRAWAL_CREATE = 'pay/balance/withdrawal/create';
+    const BALANCE_WITHDRAWAL_QUERY = 'pay/balance/withdrawal/query';
+    const BALANCE_WITHDRAWAL_LISTS = 'pay/balance/withdrawal/lists';
+    const BALANCE_WITHDRAWAL_PAY = 'pay/balance/withdrawal/pay';
+    
+    const BALANCE_TRANSFER_CREATE = 'pay/balance/transfer/create';
+    const BALANCE_TRANSFER_QUERY = 'pay/balance/transfer/query';
+    const BALANCE_TRANSFER_LISTS = 'pay/balance/transfer/lists';
 }

@@ -2,11 +2,9 @@
 
 namespace zjf\pay\apis;
 
-use Inhere\Validate\Validation;
 use mxhei\helpers\Str;
 use mxhei\signature\Signature;
 use zjf\pay\contracts\ApiInterface;
-use zjf\pay\exceptions\ParamsException;
 use zjf\pay\libs\Http;
 use zjf\pay\Pay;
 
@@ -68,21 +66,5 @@ abstract class ApiAbstract implements ApiInterface
         $data['Sign'] = $sign->setData($data)->make();
         
         return $data;
-    }
-    
-    /**
-     * @param       $data
-     * @param       $rules
-     * @param       $message
-     *
-     * @throws ParamsException
-     */
-    protected function validate($data, $rules, $message = [])
-    {
-        $validator = Validation::make($data, $rules)->setMessages($message);
-        
-        if (!$validator->validate($data)) {
-            throw new ParamsException('参数错误', $validator->getMessages());
-        }
     }
 }

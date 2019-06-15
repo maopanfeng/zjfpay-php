@@ -21,4 +21,9 @@ class ReCharge extends ApiAbstract
     {
         return $this->sendRequest(Endpoint::BALANCE_RECHARGE_LISTS, $data, 'POST', $options);
     }
+    
+    public function pay($data, $options = [])
+    {
+        return $this->sendRequest(Endpoint::BALANCE_RECHARGE_PAY, $data, 'POST', $options);
+    }
 }
