@@ -38,6 +38,7 @@ class Endpoint
     const BALANCE_RECHARGE_QUERY = 'pay/balance/recharge/query';
     const BALANCE_RECHARGE_LISTS = 'pay/balance/recharge/lists';
     const BALANCE_RECHARGE_PAY = 'pay/balance/recharge/pay';
+    const BALANCE_RECHARGE_CANCEL = 'pay/balance/recharge/cancel';
     
     const BALANCE_WITHDRAWAL_CREATE = 'pay/balance/withdrawal/create';
     const BALANCE_WITHDRAWAL_QUERY = 'pay/balance/withdrawal/query';

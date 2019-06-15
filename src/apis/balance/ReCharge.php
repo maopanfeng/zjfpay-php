@@ -26,4 +26,9 @@ class ReCharge extends ApiAbstract
     {
         return $this->sendRequest(Endpoint::BALANCE_RECHARGE_PAY, $data, 'POST', $options);
     }
+    
+    public function cancel($data, $options = [])
+    {
+        return $this->sendRequest(Endpoint::BALANCE_RECHARGE_CANCEL, $data, 'POST', $options);
+    }
 }
