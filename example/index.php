@@ -59,6 +59,16 @@ class Index
         $order = new UserCtr();
         $order->{$action}($data);
     }
+    /**
+     *
+     * @param string $action create,query,lists
+     * @param $data
+     */
+    public function recharge($action, $data)
+    {
+        $order = new RechargeCtr();
+        $order->{$action}($data);
+    }
 }
 $params = [];
 $data = [];
