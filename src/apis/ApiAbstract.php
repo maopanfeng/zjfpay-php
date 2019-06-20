@@ -60,7 +60,7 @@ abstract class ApiAbstract implements ApiInterface
     {
         $sign = new Signature();
         $data['Sign'] = $sign->setData($data)->make();
-        
+        //error_log("\n".json_encode($data, JSON_UNESCAPED_UNICODE), 3, __DIR__.'/log.log');
         return $data;
     }
 }

@@ -36,8 +36,8 @@ class Index
      */
     public function refund($action, $data)
     {
-        $refund = new \zjf\pay\apis\base\Refund();
-        var_dump($refund->{$action}($data));
+        $order = new RefundCtr();
+        $order->{$action}($data);
     }
     /**
      *

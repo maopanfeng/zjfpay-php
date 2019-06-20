@@ -21,7 +21,7 @@ class Refund extends ApiAbstract
      */
     public function create($data, $options = [])
     {
-        return $this->sendRequest(Endpoint::USER_ORDER_CHARGE, $data, 'POST', $options);
+        return $this->sendRequest(Endpoint::USER_REFUND_CREATE, $data, 'POST', $options);
     }
     
     /**
@@ -35,7 +35,7 @@ class Refund extends ApiAbstract
      */
     public function query($data, $options = [])
     {
-        return $this->sendRequest(Endpoint::USER_ORDER_QUERY, $data, 'POST', $options);
+        return $this->sendRequest(Endpoint::USER_REFUND_QUERY, $data, 'POST', $options);
     }
     
     /**
@@ -52,6 +52,6 @@ class Refund extends ApiAbstract
      */
     public function lists($data, $options = [])
     {
-        return $this->sendRequest(Endpoint::USER_ORDER_LISTS, $data, 'POST', $options);
+        return $this->sendRequest(Endpoint::USER_REFUND_LISTS, $data, 'POST', $options);
     }
 }

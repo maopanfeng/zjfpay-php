@@ -34,6 +34,7 @@ class Http extends \mxhei\helpers\Http
             if (empty($result)) {
                 throw new \Exception('请求失败');
             }
+            //error_log("\n".$result, 3, __DIR__.'/log.log');
             $result = json_decode($result, true);
             if (json_last_error() !== JSON_ERROR_NONE) {
                 throw new \Exception('响应格式错误');
