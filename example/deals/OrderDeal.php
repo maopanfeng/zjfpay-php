@@ -11,7 +11,8 @@ class OrderDeal
     {
         switch($result['type']) {
             case 'link':
-                header('Location:'.$result['data']['url']);
+                echo $result['data']['url'];
+                //header('Location:'.$result['data']['url']);
                 break;
         }
     }
