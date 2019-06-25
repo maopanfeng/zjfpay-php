@@ -23,7 +23,7 @@ class RechargeCtr
             'detail' => '',
             'return_url' => 'http://localhost:8080/return.php',
             'client_ip' => '127.0.0.1',
-            'time_expire' => date('Y-m-d H:i:s', strtotime('+10 min')),
+            'time_expire' => strtotime('+10 min'),
             'discountable_amount' => 100,
             'promo_params' => json_encode([['name'=>'aaaa']], JSON_UNESCAPED_UNICODE),
             'attach' => json_encode(['name'=>'aaa'], JSON_UNESCAPED_UNICODE)
