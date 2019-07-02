@@ -44,6 +44,12 @@ class Http extends \mxhei\helpers\Http
                 throw new \Exception(isset($result['ResponseMsg'])?$result['ResponseMsg']:'请求失败', $code);
             }
             
+            // 验证签名
+            $sign = new Sign();
+            if (!$sign->verify($result['datas'])) {
+                throw new \Exception('签名错误');
+            }
+            
             return $result['datas'];
         } catch (\Exception $e) {
             throw new RequestException($e->getMessage(), $e->getTrace(), $e->getCode());

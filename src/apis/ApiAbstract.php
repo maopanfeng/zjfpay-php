@@ -3,9 +3,9 @@
 namespace zjf\pay\apis;
 
 use mxhei\helpers\Str;
-use mxhei\signature\Signature;
 use zjf\pay\contracts\ApiInterface;
 use zjf\pay\libs\Http;
+use zjf\pay\libs\Sign;
 use zjf\pay\Pay;
 
 abstract class ApiAbstract implements ApiInterface
@@ -58,9 +58,9 @@ abstract class ApiAbstract implements ApiInterface
     
     protected function makeSign($data)
     {
-        $sign = new Signature();
-        $data['Sign'] = $sign->setData($data)->make();
-        error_log("\n".json_encode($data, JSON_UNESCAPED_UNICODE), 3, __DIR__.'/log.log');
+        $sign = new Sign();
+        $data['Sign'] = $sign->make($data);
+        //error_log("\n".json_encode($data, JSON_UNESCAPED_UNICODE), 3, __DIR__.'/log.log');
         return $data;
     }
 }
