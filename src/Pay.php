@@ -12,6 +12,10 @@ class Pay
      */
     const VERSION = '1.0.03';
     /**
+     * @var bool $on 是否启用
+     */
+    protected static $on = true;
+    /**
      * @var string $mchId 商户ID
      */
     protected static $mchId = '';
@@ -162,6 +166,22 @@ class Pay
     }
     
     /**
+     * @return bool
+     */
+    public static function isOn()
+    {
+        return self::$on;
+    }
+    
+    /**
+     * @param bool $on
+     */
+    public static function setOn($on)
+    {
+        self::$on = $on;
+    }
+    
+    /**
      * @param $name
      * @param $default
      * @return Collection|mixed
@@ -183,6 +203,7 @@ class Pay
         self::setMchId(self::$config->get('mch_id', ''));
         self::setAppId(self::$config->get('app_id', ''));
         self::setAppSecret(self::$config->get('app_secret', ''));
+        self::setOn(self::$config->get('on', true));
         if (!empty($events = self::$config->get('events'))) {
             Event::import($events);
         }

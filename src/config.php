@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'on' => true,   // 是否启用
     'mch_id' => '', // 商户号
     'app_id' => '', // 应用ID
     'app_secret' => '', // 应用密钥

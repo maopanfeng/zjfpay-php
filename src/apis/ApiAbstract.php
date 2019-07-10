@@ -4,6 +4,7 @@ namespace zjf\pay\apis;
 
 use mxhei\helpers\Str;
 use zjf\pay\contracts\ApiInterface;
+use zjf\pay\exceptions\OffException;
 use zjf\pay\libs\Http;
 use zjf\pay\libs\Sign;
 use zjf\pay\Pay;
@@ -12,6 +13,9 @@ abstract class ApiAbstract implements ApiInterface
 {
     protected function sendRequest($endpoint, $data =[], $method = 'POST', $options = [])
     {
+        if (!Pay::isOn()) {
+            throw new OffException('Zjfpay未启用');
+        }
         try {
             $data = $this->mergeData($data);
             $url = $this->getUrl($endpoint);
