@@ -102,6 +102,7 @@ class Pay
     public static function setAppSecret($appSecret)
     {
         self::$appSecret = $appSecret;
+        self::$config->set('signature.secret.value', self::getAppSecret());
     }
     
     /**
@@ -207,6 +208,5 @@ class Pay
         if (!empty($events = self::$config->get('events'))) {
             Event::import($events);
         }
-        self::$config->set('signature.secret.value', self::getAppSecret());
     }
 }
