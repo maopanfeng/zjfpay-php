@@ -84,7 +84,7 @@ class WxJsApi
             'scope' => 'snsapi_base',
             'state' => Str::random(8),
         ];
-        $url = self::ACCESS_TOKEN_URL.'?'.http_build_query($data).'#wechat_redirect';
+        $url = self::OAUTH_URL.'?'.http_build_query($data).'#wechat_redirect';
         if ($callback && is_callable($callback)) {
             return call_user_func_array($callback, ['url' => $url, 'data' => $data]);
         }
@@ -100,7 +100,7 @@ class WxJsApi
         }
         $param = ['appid' => $this->app_id, 'secret' => $this->secret, 'code' => $code, 'grant_type' => 'authorization_code'];
         
-        $url = self::OAUTH_URL.'?'.http_build_query($param);
+        $url = self::ACCESS_TOKEN_URL.'?'.http_build_query($param);
         $result = file_get_contents($url);//通过code换取网页授权access_token
         
         $result = json_decode($result, 1); //对JSON格式的字符串进行编码
@@ -138,7 +138,6 @@ EOF;
     
     public function createJsApiHtml($jsApiParameters, $callback = '')
     {
-        $returnhost = $_GET['redirecthost'];
         $html = <<<EOF
 <html>
 <head>
