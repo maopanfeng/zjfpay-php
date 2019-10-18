@@ -78,13 +78,20 @@ class WxJsApi
         if (isset($data['code']) && $data['code']) {
             $this->getOpenId($data);
         }
-        $data += [
+        /*$data += [
             'appid' => $this->app_id,
             'response_type' => 'code',
             'scope' => 'snsapi_base',
             'state' => Str::random(8),
+        ];*/
+        $params = [
+            'appid' => $this->app_id,
+            'redirect_uri' => $data['redirect_uri'],
+            'response_type' => 'code',
+            'scope' => 'snsapi_base',
+            'state' => !empty($data['state']) ? $data['state'] : Str::random(8),
         ];
-        $url = self::OAUTH_URL.'?'.http_build_query($data).'#wechat_redirect';
+        $url = self::OAUTH_URL.'?'.http_build_query($params).'#wechat_redirect';
         if ($callback && is_callable($callback)) {
             return call_user_func_array($callback, ['url' => $url, 'data' => $data]);
         }
@@ -108,7 +115,7 @@ class WxJsApi
         $openid = isset($result['openid']) ? $result['openid'] : 0;//输出openid
         $state = isset($data['state']) ? trim($data['state']) : '';
         if (!$openid || !$state) {
-            throw new PayException('获取授权失败', ['data' => $data, 'result' => $result]);
+            throw new PayException('获取授权失败'.json_encode($result), ['data' => $data, 'result' => $result]);
         }
         
         return [
@@ -138,6 +145,7 @@ EOF;
     
     public function createJsApiHtml($jsApiParameters, $callback = '')
     {
+        $jsApiParameters = is_array($jsApiParameters) ? json_encode($jsApiParameters['data'], JSON_UNESCAPED_UNICODE) : $jsApiParameters;
         $html = <<<EOF
 <html>
 <head>
@@ -156,7 +164,7 @@ EOF;
                     //WeixinJSBridge.log(res.err_msg);
                     //alert(res.err_code+res.err_desc+res.err_msg);
                     {$callback}
-                };
+                }
             )
         }
 
