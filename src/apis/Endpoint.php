@@ -48,4 +48,7 @@ class Endpoint
     const BALANCE_TRANSFER_CREATE = 'pay/balance/transfer/create';
     const BALANCE_TRANSFER_QUERY = 'pay/balance/transfer/query';
     const BALANCE_TRANSFER_LISTS = 'pay/balance/transfer/lists';
+    
+    const BALANCE_CHANGE_MUL = 'pay/balance/change';
+    const BALANCE_CHANGE_CREATE = 'pay/balance/change/create';
 }
