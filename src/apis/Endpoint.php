@@ -51,4 +51,11 @@ class Endpoint
     
     const BALANCE_CHANGE_MUL = 'pay/balance/change';
     const BALANCE_CHANGE_CREATE = 'pay/balance/change/create';
+
+    const FINANCE_CHARGES_TYPES = 'pay/finance/charges/types';
+    const FINANCE_CHARGES_ADD = 'pay/finance/charges/add';
+    const FINANCE_CHARGES_EDIT = 'pay/finance/charges/edit';
+    const FINANCE_CHARGES_INFO = 'pay/finance/charges/info';
+    const FINANCE_CHARGES_LISTS = 'pay/finance/charges/lists';
+    const FINANCE_CHARGES_EXPORT = 'pay/finance/charges/export';
 }
