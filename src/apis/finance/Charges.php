@@ -67,4 +67,16 @@ class Charges extends ApiAbstract
     {
         return $this->sendRequest(Endpoint::FINANCE_CHARGES_EXPORT, $data, 'POST', $options);
     }
+    /**
+     * @param       $data
+     *
+     * @param array $options
+     *
+     * @return bool|string
+     * @throws \Exception
+     */
+    public function types($data, $options = [])
+    {
+        return $this->sendRequest(Endpoint::FINANCE_CHARGES_TYPES, $data, 'POST', $options);
+    }
 }
